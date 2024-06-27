@@ -18,6 +18,16 @@ public class Main {
 		Gorani oldGorani = Gorani.getOldGorani("old gorani");
 
 
-
+		/*
+		2. 호출 될 때 마다 인스턴스를 새로 생성하지는 않아도 된다.
+		2-1. 새로 생성한 인스턴스를 캐싱하여 재활용하는 식으로 불필요한 객체 생성을 피할 수 있다.
+			- Boolean.valueOf(boolean)
+			- Flyweight pattern
+		2-2. 반복되는 요청에 같은 객체를 반환하는 식으로 정적 팩터리 방식의 클래스는 언제 어느 인스턴스를 살아 있게 할지를 철저히 통제할 수 있다.
+			- 이유1. 싱글턴
+			- 이유2. 인스턴스화 불가
+			- 이유3. 동치 보장(a==b, a.equals(b))
+		 */
+		Gorani defaultGorani = Gorani.getDefaultGorani();
 	}
 }
