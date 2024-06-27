@@ -45,6 +45,20 @@ public class Main {
 		 */
 		Animal gorani = AnimalFactory.getAnimalByName("gorani");
 
+		/*
+		3. 반환 타입의 하위 타입 객체를 반환할 수 있는 능력이 있다.
+		4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
+		5. 정적 팩터리 메서드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.
+		 */
+		ServiceLoader<GoraniService> serviceLoader = ServiceLoader.load(GoraniService.class);
+		Optional<GoraniService> goraniServiceOptional = serviceLoader.findFirst();
 
+		goraniServiceOptional.ifPresent( service -> {
+			System.out.println(service.feedGorani(defaultGorani));
+		});
 	}
 }
+
+/*
+
+ */
