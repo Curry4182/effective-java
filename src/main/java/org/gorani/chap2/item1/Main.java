@@ -1,5 +1,8 @@
 package org.gorani.chap2.item1;
 
+import java.util.Optional;
+import java.util.ServiceLoader;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -29,5 +32,19 @@ public class Main {
 			- 이유3. 동치 보장(a==b, a.equals(b))
 		 */
 		Gorani defaultGorani = Gorani.getDefaultGorani();
+
+		/*
+		3. 반환 타입의 하위 타입 객체를 반환할 수 있는 능력이 있다.
+		3-1. 반환할 객체의 클래스를 자유롭게 선택할 수 있다.
+			- 구현 클래스를 공개하지 않고도 극 객체를 반환할 수 있어 API를 작게 유지할 수 있다.
+			- 프레임워크를 구현하기 위한 핵심 기술
+		3-2. 자바 8 전에는 인터페이스에 정적 메서드를 선언할 수 없었다.
+			- "Type" 인터페이스를 반환하는 정적 메서드가 필요하면, "Types"라는 동반 클래스(companion class)를 만드는게 관례
+			- 예로 들어, 자바 컬렉션 프레임워크는 핵심 인터페이스들에 수정 불가나 동기화 등의 기능을 덧붙인 45개의 유틸리티 구현체를 제공
+			- java.util.Collections에서 정적 팩터리 메서드를 통해 얻도록 한다.
+		 */
+		Animal gorani = AnimalFactory.getAnimalByName("gorani");
+
+
 	}
 }

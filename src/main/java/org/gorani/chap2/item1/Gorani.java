@@ -1,6 +1,9 @@
 package org.gorani.chap2.item1;
 
-public class Gorani {
+/**
+ * 초원에 사는 야생 고라니
+ */
+public class Gorani implements Animal {
 
 	private String name;
 	private int age;
@@ -36,5 +39,10 @@ public class Gorani {
 		}
 
 		return defaultGorani;
+	}
+
+	@Override
+	public String run() {
+		return "이름: " + name + "나이: " + age + " 초원에서 달리다.";
 	}
 }
