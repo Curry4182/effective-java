@@ -7,6 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
+
 		/*
 		정적 팩토리 메서드에는 다섯 가지 장점이 있다.
 		 */
@@ -17,8 +18,9 @@ public class Main {
 		특성을 쉽게 묘사할 수 있다.
 		1-2. 하나의 시그니처로는 생성자를 하나만 만들 수 있다.
 		 */
-		Gorani youngGorani = Gorani.getYoungGorani("young gorani");
-		Gorani oldGorani = Gorani.getOldGorani("old gorani");
+		AnimalTexture goraniTexture = AnimalTextureFactory.getInstance("gorani");
+		Gorani youngGorani = Gorani.getYoungGorani("young gorani", goraniTexture);
+		Gorani oldGorani = Gorani.getOldGorani("old gorani", goraniTexture);
 
 
 		/*
@@ -55,6 +57,9 @@ public class Main {
 		goraniServiceOptional.ifPresent( service -> {
 			System.out.println(service.feedGorani(defaultGorani));
 		});
+
+
+
 	}
 }
 

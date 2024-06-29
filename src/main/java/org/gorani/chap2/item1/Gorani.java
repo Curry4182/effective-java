@@ -9,19 +9,21 @@ public class Gorani implements Animal {
 	private int age;
 	private static volatile Gorani defaultGorani;
 	private GoraniStatus goraniStatus;
+	private AnimalTexture texture;
 
-	private Gorani(String name, int age) {
+	private Gorani(String name, int age, AnimalTexture animalTexture) {
 		this.name = name;
 		this.age = age;
+		this.texture = animalTexture;
 		this.goraniStatus = GoraniStatus.DEFAULT;
 	}
 
-	public static Gorani getOldGorani(String name) {
-		return new Gorani(name, 100);
+	public static Gorani getOldGorani(String name, AnimalTexture animalTexture) {
+		return new Gorani(name, 100, animalTexture);
 	}
 
-	public static Gorani getYoungGorani(String name) {
-		return new Gorani(name, 0);
+	public static Gorani getYoungGorani(String name, AnimalTexture animalTexture) {
+		return new Gorani(name, 0, animalTexture);
 	}
 
 	public static Gorani getDefaultGorani() {
@@ -34,8 +36,9 @@ public class Gorani implements Animal {
 			 * synchronized는 너무 느리기 때문에 if문으로 한번 더 검사하는 구조
 			 */
 			synchronized (Gorani.class) {
+				AnimalTexture animalTexture = AnimalTextureFactory.getInstance("gorani");
 				if(defaultGorani == null) {
-					defaultGorani = new Gorani("default gorani", 0);
+					defaultGorani = new Gorani("default gorani", 0, animalTexture);
 				}
 			}
 		}
