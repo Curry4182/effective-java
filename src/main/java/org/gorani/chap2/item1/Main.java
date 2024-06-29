@@ -1,5 +1,9 @@
 package org.gorani.chap2.item1;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.ServiceLoader;
 
@@ -58,8 +62,28 @@ public class Main {
 			System.out.println(service.feedGorani(defaultGorani));
 		});
 
+		/**
+		 p10
+		 자바 8 전에는 인터페이스에 정적 메서드를 선언할 수 없었다.
+		 그렇기 때문에 이름이 "Type"인 인터페이스를 반환하는 정적 메서드가 필요하다면 "Types"라는 동반 클래스(companion class)를
+		 만들어 그 안에 정의하는 것이 관례였다.
 
+		 예로들어 자바 컬렉션 프레임워크는 핵심 인터페이스들에 수정 불가나 동기화 등의 기능을 덧분인 총 45개의 유틸리티 구현체를 제고
+		 하는데, 이 구현체 대부분을 단 하나의 인스턴스화 불가 클래스인 java.util.Collections에서 정적 팩터리 메서드를 통해 얻도록 했다.
 
+		 자바 8부터는 인터페이스가 정적 메서드를 가질 수 없다는 제한이 풀렸기 때문에 인스턴스화 불가 동반 클래스(companion class)를
+		 둘 이유가 별로 없다.
+		 */
+		List<Integer> arr = new ArrayList<>();
+		Comparator<Integer> comparator = new Comparator<Integer>() {
+			@Override
+			public int compare(final Integer o1, final Integer o2) {
+				return o2 - o1;
+			}
+		};
+		comparator.reversed();
+
+		arr.sort(comparator);
 	}
 }
 
