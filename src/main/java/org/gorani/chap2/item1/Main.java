@@ -52,7 +52,6 @@ public class Main {
 		 */
 		ServiceLoader<GoraniService> serviceLoader = ServiceLoader.load(GoraniService.class);
 		Optional<GoraniService> goraniServiceOptional = serviceLoader.findFirst();
-
 		goraniServiceOptional.ifPresent( service -> {
 			System.out.println(service.feedGorani(defaultGorani));
 		});

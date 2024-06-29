@@ -8,10 +8,12 @@ public class Gorani implements Animal {
 	private String name;
 	private int age;
 	private static volatile Gorani defaultGorani;
+	private GoraniStatus goraniStatus;
 
 	private Gorani(String name, int age) {
 		this.name = name;
 		this.age = age;
+		this.goraniStatus = GoraniStatus.DEFAULT;
 	}
 
 	public static Gorani getOldGorani(String name) {
@@ -43,6 +45,26 @@ public class Gorani implements Animal {
 
 	@Override
 	public String run() {
+		this.goraniStatus = GoraniStatus.RUNNING;
 		return "이름: " + name + "나이: " + age + " 초원에서 달리다.";
+	}
+
+	public String sleep() {
+		this.goraniStatus = GoraniStatus.SLEEPING;
+		return "이름: " + name + "나이: " + age + " 잠을 자다.";
+	}
+
+	public String eat() {
+		this.goraniStatus = GoraniStatus.EATING;
+		return "이름: " + name + "나이: " + age + " 밥을 먹다.";
+	}
+
+	public String die() {
+		this.goraniStatus = GoraniStatus.DEAD;
+		return "이름: " + name + "나이: " + age + " 죽다.";
+	}
+
+	public String getStatus() {
+		return "이름: " + name + "나이: " + age + " 상태: " + goraniStatus;
 	}
 }
